@@ -12,7 +12,7 @@ public class Worker {
 	private Double baseSalary;
 	
 	private Department department;
-	private List<HourContract> contracts = new ArrayList<>();
+	private List<HourContract> contracts = new ArrayList<>(); //NÃO COLOCAR NO CONSTRUTOR, pois já foi instanciado
 	
 	public Worker() {
 		
@@ -75,15 +75,15 @@ public class Worker {
 		contracts.remove(contract);
 	}
 	
-	public double income(int year, int month) {
+	public double income(int year, int month) { //Calcular o  novo salário com base nos contratos
 		double sum = baseSalary;
-		Calendar cal = Calendar.getInstance();
-		for (HourContract c : contracts) {
-			cal.setTime(c.getDate());
-			int c_year = cal.get(Calendar.YEAR);
-			int c_month = 1 + cal.get(Calendar.MONTH);
+		Calendar cal = Calendar.getInstance(); //Instância um novo calendário "cal"
+		for (HourContract c : contracts) { //Para todos os contratos na lista CONTRACTS...
+			cal.setTime(c.getDate());  //Converte as dates do contracts para o calendário
+			int c_year = cal.get(Calendar.YEAR); //Guarda o ano atual no c_year
+			int c_month = 1 + cal.get(Calendar.MONTH); //Guarda o mês atual no c_month + 1,pois o MONTH no calendar começa com 00
 			if (year == c_year && month ==c_month) {
-				sum += c.totalValue();
+				sum += c.totalValue(); //Realiza o cálculo caso o ano e mês do contrato sejam equivalentes ao input
 			}
 		}
 		return sum;
