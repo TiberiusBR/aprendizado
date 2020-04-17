@@ -76,7 +76,7 @@ public class Post {
 		StringBuilder sb = new StringBuilder();
 		sb.append(title + "\n");
 		sb.append(likes);
-		sb.append("Likes - ");
+		sb.append(" Likes - ");
 		sb.append(sdf.format(moment) + "\n");
 		sb.append(content + "\n");
 		sb.append("Comments:\n");

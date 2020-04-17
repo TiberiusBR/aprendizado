@@ -32,6 +32,7 @@ public class Program {
 		p2.addComment(c4);
 		
 		System.out.println(p1);
+		System.out.println(p2);
 		
 
 	}
