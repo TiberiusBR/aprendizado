@@ -3,15 +3,15 @@ package er118;
 public class Product {
 	
 	public String name;
-	public Double prince;
+	public Double price;
 	
 	public Product() {
 		
 	}
 
-	public Product(String name, Double prince) {
+	public Product(String name, Double price) {
 		this.name = name;
-		this.prince = prince;
+		this.price = price;
 	}
 
 	public String getName() {
@@ -23,11 +23,11 @@ public class Product {
 	}
 
 	public Double getPrince() {
-		return prince;
+		return price;
 	}
 
-	public void setPrince(Double prince) {
-		this.prince = prince;
+	public void setPrince(Double price) {
+		this.price = price;
 	}
 	
 
