@@ -38,7 +38,7 @@ public class Program {
 		for (int i = 1; i <= qtd; i++) {
 			System.out.println("Enter #" + i + " item data: ");
 			System.out.println("Name: ");
-			String nameProduct = sc.next();
+			String nameProduct = sc.nextLine();
 			System.out.println("Product Price: ");
 			double price = sc.nextDouble();
 			Product product = new Product(nameProduct, price);
