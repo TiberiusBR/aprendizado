@@ -31,24 +31,33 @@ public class Program {
 				
 				String [] splitText = line.split(";");
 				
-				list.add(new Product(splitText[0], Double.parseDouble(splitText[1]), Integer.parseInt(splitText[2])));
-				System.out.println(splitText[0] + " , " + splitText[1] + " , " + splitText[2]);
+				String name = splitText[0];
+				Double price = Double.parseDouble(splitText[1]);
+				Integer quantity = Integer.parseInt(splitText[2]);
+				
+				
+				list.add(new Product(name , price , quantity));
+				System.out.println(name+ " , " + price + " , " + quantity);
 			}
 			
 			boolean check = new File(strPath + "\\out").mkdir();
 			System.out.println("Directory created: " + check);	
 			
-			BufferedWriter bw = new BufferedWriter(new FileWriter((strPath + "\\out\\summary.csv") , true)); //Funciona, porém, use um try aqui. Assim ele fechará o buffer sozinho.
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter((strPath + "\\out\\summary.csv") , true))) { //Funciona, porém, use um try aqui. Assim ele fechará o buffer sozinho.
 			
 			for (Product lis : list) { //Ao usar um try, um catch pode ser colocado para indicar erro na escrita dos valores.
 				bw.write(lis.getName() + ";" + lis.total());
 				bw.newLine();
 				System.out.println("Item added!");
+				}
+			} 
+			catch (IOException e) {
+				System.out.println("Erro na escrita.");
+				e.printStackTrace();
 			}
-			bw.close(); //Fechamento manual
 		}
 		catch (IOException e) { 
-			System.out.println("Erro na leitura/escrita.");
+			System.out.println("Erro na leitura.");
 			e.printStackTrace(); //Erro Geral de IO
 		}
 		
