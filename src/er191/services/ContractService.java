@@ -18,11 +18,10 @@ public class ContractService {
 	}
 	
 	public void processContract(Contract contract , Integer months) {
-		
 		Calendar cal = Calendar.getInstance();
 		Date date = contract.getDate();
 		cal.setTime(date);
-		double value = (contract.getTotalValue() / 3);
+		double value = (contract.getTotalValue() / months);
 		
 		for(int i = 1; i <= months; i++) {
 			
